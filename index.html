@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <title>Tropicália</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --tamanho-fonte: 1rem;
+            --verde-escuro: #0d4d26;
+            --verde-medio: #1a6d38;
+            --verde-claro: #2e8b57;
+            --bege: #f5f5dc;
+            --amarelo: #ffd700;
+            --laranja: #ff8c00;
+            --marrom: #8B4513;
+        }
+
+        body {
+            font-size: var(--tamanho-fonte);
+            background: linear-gradient(to bottom, #f8f9fa, #e9f5e9);
+            transition: all 0.3s ease;
+            font-family: 'Lora', serif;
+            color: #333;
+            line-height: 1.6;
+            padding-top: 20px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--verde-escuro);
+        }
+
+        .container-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-escuro) 100%);
+            padding: 20px 0;
+            border-bottom: 5px solid var(--amarelo);
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            margin: 0 10px;
+            padding: 10px 15px !important;
+            border-radius: 30px;
+        }
+
+        .nav-link:hover {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-img {
+            height: 80px;
+            transition: transform 0.3s;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+        }
+
+        .nav-img:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-acessibilidade {
+            position: relative;
+        }
+
+        .opcoes-acessibilidade {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            padding: 15px;
+            display: none;
+            z-index: 1000;
+            min-width: 140px;
+            border: 2px solid var(--verde-medio);
+        }
+
+        .opcoes-acessibilidade.mostrar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn-acessibilidade {
+            background: linear-gradient(to bottom, var(--verde-medio), var(--verde-escuro));
+            border: none;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 30px;
+            padding: 10px 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-acessibilidade:hover {
+            background: linear-gradient(to bottom, var(--verde-claro), var(--verde-medio));
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .inicio-fundo {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a6d38"/><path d="M0 0L100 100" stroke="%230d4d26" stroke-width="2"/><path d="M100 0L0 100" stroke="%230d4d26" stroke-width="2"/></svg>');
+            padding: 60px 40px;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .inicio-fundo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23ffd700" opacity="0.2" d="M0,100 C50,150 50,50 100,100 C150,50 150,150 200,100 L200,00 L0,0 Z"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .botao-inicio {
+            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
+            border: none;
+            padding: 15px 40px;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1.2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .botao-inicio::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.4s;
+            z-index: -1;
+        }
+
+        .botao-inicio:hover {
+            background: linear-gradient(to right, var(--verde-medio), var(--verde-claro));
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .botao-inicio:hover::before {
+            left: 100%;
+        }
+
+        .img-inicio {
+            max-height: 450px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s;
+            border: 8px solid var(--bege);
+            margin-top: 30px;
+        }
+
+        .img-inicio:hover {
+            transform: scale(1.03) rotate(1deg);
+        }
+
+        .secao-tropicalia {
+            background: linear-gradient(to bottom, #ffffff, #f8f6f0);
+            padding: 60px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .secao-tropicalia::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: var(--amarelo);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .secao-tropicalia::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: var(--laranja);
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+
+        .fundo-galeria {
+            background: linear-gradient(to bottom, #f8f6f0, #ffffff);
+            padding: 50px 30px;
+            position: relative;
+        }
+
+        .fundo-galeria::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--verde-escuro), var(--verde-medio), var(--verde-claro), var(--amarelo), var(--laranja));
+        }
+
+        .img-galeria {
+            border-radius: 15px;
+            transition: all 0.4s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 5px solid white;
+        }
+
+        .img-galeria:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .formulario {
+            background: linear-gradient(to bottom, #ffffff, #f8f6f0);
+            padding: 50px;
+            position: relative;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(26, 109, 56, 0.1);
+        }
+
+        .formulario::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid var(--verde-medio);
+            border-radius: 15px;
+            pointer-events: none;
+            opacity: 0.2;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--verde-medio);
+            box-shadow: 0 0 0 0.3rem rgba(26, 109, 56, 0.15);
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-escuro) 100%);
+            color: white;
+            padding: 40px 0 20px;
+            border-top: 5px solid var(--amarelo);
+        }
+
+        .bi {
+            font-size: 24px;
+            margin: 0 10px;
+            color: white;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bi:hover {
+            color: var(--amarelo);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        /* Classes para tamanhos de fonte */
+        .fonte-pequena {
+            --tamanho-fonte: 0.875rem;
+        }
+
+        .fonte-normal {
+            --tamanho-fonte: 1rem;
+        }
+
+        .fonte-grande {
+            --tamanho-fonte: 1.125rem;
+        }
+
+        .fonte-muito-grande {
+            --tamanho-fonte: 1.25rem;
+        }
+
+        /* Ajustes para diferentes tamanhos de tela */
+        @media (max-width: 768px) {
+            .inicio-fundo {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+            
+            .esquerda-conteudo {
+                margin-bottom: 30px;
+            }
+            
+            .secao-tropicalia .container {
+                flex-direction: column;
+            }
+            
+            .secao-tropicalia .col-4, 
+            .secao-tropicalia .col-5 {
+                width: 100% !important;
+                max-width: 100%;
+            }
+            
+            .opcoes-acessibilidade {
+                right: auto;
+                left: 0;
+            }
+            
+            .formulario {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Animações */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .flutuante {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .text-verde {
+            color: var(--verde-escuro);
+        }
+        
+        .divisor {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--verde-medio), transparent);
+            width: 80%;
+            margin: 30px auto;
+        }
+        
+        .destaque {
+            background: linear-gradient(120deg, rgba(255,215,0,0.1) 0%, rgba(255,140,0,0.1) 100%);
+            border-left: 5px solid var(--laranja);
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin: 25px 0;
+        }
+    </style>
+</head>
+
+<body class="fonte-normal">
+    <div class="container-main">
+        <header class="p-3 p-md-4">
+            <nav class="container d-flex justify-content-between align-items-center flex-wrap">
+                <img src="logo.png" class="nav-img flutuante" loading="lazy" alt="Logo Tropicália">
+                <ul class="nav mt-3 mt-md-0">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+
+                <div id="acessibilidade" class="menu-acessibilidade">
+                    <button id="botao-acessibilidade" class="btn btn-acessibilidade btn-primary fw-bold">
+                        <i class="bi bi-accessibility"></i> Acessibilidade
+                    </button>
+                    <div id="opcoes-acessibilidade" class="opcoes-acessibilidade">
+                        <button id="aumentar-fonte" class="btn btn-acessibilidade fw-bold">A +</button>
+                        <button id="diminuir-fonte" class="btn btn-acessibilidade fw-bold">A -</button>
+                        <button id="fonte-normal" class="btn btn-acessibilidade fw-bold">A •</button>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section id="inicio" class="my-0">
+                <div class="inicio-fundo d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="esquerda-conteudo mx-auto">
+                        <h1 class="display-4 text-white fst-italic fw-bold">Boas-vindas a</h1>
+                        <img src="logo-2.png" class="mb-4 flutuante" width="563" height="278" loading="lazy" alt="Logo Tropicália">
+                        <a href="#tropicalia" class="btn btn-primary btn-lg botao-inicio fw-semibold">Quero conhecer!</a>
+                    </div>
+                    <img src="lossy-page1-640px-Os_Mutantes.tif (1).png"
+                        alt="A imagem apresenta o grupo musical Os mutantes, são três pessoas cantando em dois microfones"
+                        title="Os mutantes - CC0 Domínio Público / Acervo Arquivo Nacional" class="img-fluid img-inicio mt-4 mt-md-0 mx-auto d-block">
+                </div>
+            </section>
+
+            <section id="tropicalia" class="secao-tropicalia">
+                <div class="container d-flex align-items-center flex-wrap py-5">
+                    <div class="col-12 col-md-4 d-flex justify-content-center mb-4 mb-md-0">
+                        <img src="image (1).png" class="rounded-pill img-galeria" alt="Imagem representativa da Tropicália" width="273" height="331" loading="lazy">
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <h2 class="text-verde mb-4">O que foi a Tropicália?</h2>
+                        <p class="p-2">A Tropicália, também conhecida como Tropicalismo, foi um movimento cultural brasileiro que surgiu na década de 1960, tendo seu auge entre 1967 e 1968. Esse movimento abrangeu várias expressões artísticas, como a música, o cinema, o teatro e as artes plásticas, e teve como principal característica a mistura de elementos da cultura brasileira tradicional com influências estrangeiras, especialmente do rock e da música pop.</p>
+                        
+                        <div class="destaque">
+                            <p class="mb-0"><i class="bi bi-info-circle"></i> Fonte: Site Toda a matéria</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="divisor"></div>
+            </section>
+
+            <section id="galeria" class="fundo-galeria">
+                <h2 class="text-center pt-3 text-verde">Galeria</h2>
+                <p class="text-center mb-5">Alguns dos principais artistas do movimento tropicalista</p>
+                
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-5 mb-4">
+                            <img src="lossy-page1-640px-Jorge_Ben_e_o_Trio_Mocotó_no_Teatro_da_Lagoa,_1971.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Jorge Ben e o Trio Mocotó no Teatro da Lagoa, 1971">
+                            <p class="text-center mt-2">Jorge Ben e o Trio Mocotó (1971)</p>
+                        </div>
+                        <div class="col-md-5 mb-4">
+                            <img src="lossy-page1-640px-Os_Mutantes_2.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Os Mutantes">
+                            <p class="text-center mt-2">Os Mutantes</p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-5 mb-4">
+                            <img src="lossy-page1-640px-Gilberto_Gil_nos_anos_1960.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Gilberto Gil nos anos 1960">
+                            <p class="text-center mt-2">Gilberto Gil (anos 1960)</p>
+                        </div>
+                        <div class="col-md-5 mb-4">
+                            <img src="lossy-page1-640px-Caetano_Veloso_no_III_Festival_da_Música_Popular.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Caetano Veloso no III Festival da Música Popular">
+                            <p class="text-center mt-2">Caetano Veloso no III Festival da MPB</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="divisor"></div>
+            </section>
+
+            <section id="contato" class="py-5">
+                <div class="container d-flex justify-content-center">
+                    <div class="col-md-10 col-lg-8 formulario">
+                        <h2 class="mb-4 text-center text-verde">Entre em contato</h2>
+                        <form>
+                            <div class="form-group mb-4">
+                                <label for="nome" class="form-label">Nome</label>
+                                <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1" placeholder="Digite seu nome completo">
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" name="email" class="form-control rounded-3 mt-1" placeholder="Digite seu email">
+                            </div>
+                            <div class="form-group mb-4">
+                                <label for="mensagem" class="form-label">Mensagem</label>
+                                <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4" placeholder="Escreva sua mensagem"></textarea>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-acessibilidade btn-lg rounded-pill py-3">Enviar mensagem</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center p-4 fst-italic">
+            <p>Acesse nossas redes:</p>
+            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+            <p class="mt-4">Desenvolvido por Start by Alura. Projeto fictício sem fins comerciais.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const botaoAcessibilidade = document.getElementById('botao-acessibilidade');
+            const opcoesAcessibilidade = document.getElementById('opcoes-acessibilidade');
+            const aumentarFonteBtn = document.getElementById('aumentar-fonte');
+            const diminuirFonteBtn = document.getElementById('diminuir-fonte');
+            const fonteNormalBtn = document.getElementById('fonte-normal');
+            const body = document.body;
+            
+            // Alternar a exibição do menu de acessibilidade
+            botaoAcessibilidade.addEventListener('click', function(e) {
+                e.stopPropagation();
+                opcoesAcessibilidade.classList.toggle('mostrar');
+            });
+            
+            // Fechar o menu ao clicar fora dele
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.menu-acessibilidade')) {
+                    opcoesAcessibilidade.classList.remove('mostrar');
+                }
+            });
+            
+            // Controlar o tamanho da fonte
+            aumentarFonteBtn.addEventListener('click', function() {
+                if (body.classList.contains('fonte-normal')) {
+                    body.classList.remove('fonte-normal');
+                    body.classList.add('fonte-grande');
+                } else if (body.classList.contains('fonte-grande')) {
+                    body.classList.remove('fonte-grande');
+                    body.classList.add('fonte-muito-grande');
+                } else if (body.classList.contains('fonte-pequena')) {
+                    body.classList.remove('fonte-pequena');
+                    body.classList.add('fonte-normal');
+                }
+                opcoesAcessibilidade.classList.remove('mostrar');
+                localStorage.setItem('tamanhoFonte', body.classList[0]);
+            });
+            
+            diminuirFonteBtn.addEventListener('click', function() {
+                if (body.classList.contains('fonte-normal')) {
+                    body.classList.remove('fonte-normal');
+                    body.classList.add('fonte-pequena');
+                } else if (body.classList.contains('fonte-grande')) {
+                    body.classList.remove('fonte-grande');
+                    body.classList.add('fonte-normal');
+                } else if (body.classList.contains('fonte-muito-grande')) {
+                    body.classList.remove('fonte-muito-grande');
+                    body.classList.add('fonte-grande');
+                }
+                opcoesAcessibilidade.classList.remove('mostrar');
+                localStorage.setItem('tamanhoFonte', body.classList[0]);
+            });
+            
+            fonteNormalBtn.addEventListener('click', function() {
+                body.classList.remove('fonte-pequena', 'fonte-grande', 'fonte-muito-grande');
+                body.classList.add('fonte-normal');
+                opcoesAcessibilidade.classList.remove('mostrar');
+                localStorage.setItem('tamanhoFonte', 'fonte-normal');
+            });
+            
+            // Verificar se há uma preferência salva
+            const tamanhoSalvo = localStorage.getItem('tamanhoFonte');
+            if (tamanhoSalvo) {
+                body.classList.remove('fonte-pequena', 'fonte-normal', 'fonte-grande', 'fonte-muito-grande');
+                body.classList.add(tamanhoSalvo);
+            }
+            
+            // Prevenir o comportamento padrão do formulário
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Mensagem enviada com sucesso! (Simulação)');
+                    form.reset();
+                });
+            }
+            
+            // Adicionar smooth scroll para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
