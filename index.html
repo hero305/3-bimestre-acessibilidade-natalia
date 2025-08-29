@@ -1,133 +1,182 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <title>Tropicália</title>
+    <title>Tropicália - Design Experimental</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <style>
         :root {
             --tamanho-fonte: 1rem;
-            --verde-escuro: #0d4d26;
-            --verde-medio: #1a6d38;
-            --verde-claro: #2e8b57;
-            --bege: #f5f5dc;
-            --amarelo: #ffd700;
-            --laranja: #ff8c00;
-            --marrom: #8B4513;
+            --cor-primaria: #FF3E00;
+            --cor-secundaria: #00B0FF;
+            --cor-terciaria: #FFD600;
+            --cor-fundo: #121212;
+            --cor-texto: #E0E0E0;
+            --cor-destaque: #FF1744;
+            --cor-card: #1E1E1E;
+            --cor-borda: #424242;
         }
 
         body {
             font-size: var(--tamanho-fonte);
-            background: linear-gradient(to bottom, #f8f9fa, #e9f5e9);
-            transition: all 0.3s ease;
-            font-family: 'Lora', serif;
-            color: #333;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-family: 'Courier New', monospace;
             line-height: 1.6;
-            padding-top: 20px;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--verde-escuro);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
         .container-main {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
             padding: 0;
         }
 
+        /* Header estilo cyberpunk */
         header {
-            background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-escuro) 100%);
-            padding: 20px 0;
-            border-bottom: 5px solid var(--amarelo);
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.9) !important;
-            font-weight: 500;
-            transition: color 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            margin: 0 10px;
-            padding: 10px 15px !important;
-            border-radius: 30px;
-        }
-
-        .nav-link:hover {
-            color: #fff !important;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(30, 30, 30, 0.95);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--cor-primaria);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 5px 25px rgba(255, 62, 0, 0.3);
         }
 
         .nav-img {
-            height: 80px;
-            transition: transform 0.3s;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+            height: 70px;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 0 8px var(--cor-primaria));
         }
 
         .nav-img:hover {
-            transform: scale(1.05);
+            transform: rotate(5deg) scale(1.1);
         }
 
+        .nav-link {
+            color: var(--cor-texto) !important;
+            font-weight: 600;
+            padding: 12px 24px !important;
+            margin: 0 8px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid transparent;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--cor-primaria);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--cor-primaria) !important;
+            text-shadow: 0 0 10px rgba(255, 62, 0, 0.7);
+        }
+
+        /* Menu de acessibilidade futurista */
         .menu-acessibilidade {
             position: relative;
+        }
+
+        .btn-acessibilidade {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+            border: none;
+            border-radius: 4px;
+            padding: 12px 24px;
+            color: white;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 62, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-acessibilidade::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .btn-acessibilidade:hover::before {
+            left: 50%;
+        }
+
+        .btn-acessibilidade:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255, 62, 0, 0.7);
         }
 
         .opcoes-acessibilidade {
             position: absolute;
             top: 100%;
             right: 0;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: var(--cor-card);
+            border-radius: 8px;
             padding: 15px;
             display: none;
             z-index: 1000;
-            min-width: 140px;
-            border: 2px solid var(--verde-medio);
+            min-width: 160px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--cor-primaria);
+            margin-top: 10px;
         }
 
         .opcoes-acessibilidade.mostrar {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+            animation: slideDown 0.3s ease;
         }
 
-        .btn-acessibilidade {
-            background: linear-gradient(to bottom, var(--verde-medio), var(--verde-escuro));
-            border: none;
-            transition: all 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            border-radius: 30px;
-            padding: 10px 20px;
-            color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        .btn-opcao {
+            background: rgba(255, 62, 0, 0.1);
+            border: 2px solid var(--cor-primaria);
+            color: var(--cor-texto);
+            border-radius: 4px;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-align: center;
         }
 
-        .btn-acessibilidade:hover {
-            background: linear-gradient(to bottom, var(--verde-claro), var(--verde-medio));
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        .btn-opcao:hover {
+            background: var(--cor-primaria);
+            color: black;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--cor-primaria);
         }
 
+        /* Seção inicial com efeito glitch */
         .inicio-fundo {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a6d38"/><path d="M0 0L100 100" stroke="%230d4d26" stroke-width="2"/><path d="M100 0L0 100" stroke="%230d4d26" stroke-width="2"/></svg>');
-            padding: 60px 40px;
-            border-radius: 0;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            padding: 120px 0;
+            text-align: center;
             position: relative;
             overflow: hidden;
-            text-align: center;
         }
 
         .inicio-fundo::before {
@@ -137,181 +186,379 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path fill="%23ffd700" opacity="0.2" d="M0,100 C50,150 50,50 100,100 C150,50 150,150 200,100 L200,00 L0,0 Z"/></svg>');
-            background-size: cover;
+            background: 
+                linear-gradient(90deg, transparent 98%, var(--cor-primaria) 100%) 0 0,
+                linear-gradient(90deg, transparent 98%, var(--cor-secundaria) 100%) 0 0,
+                linear-gradient(90deg, transparent 98%, var(--cor-terciaria) 100%) 0 0;
+            background-size: 200px 2px;
+            animation: scanlines 10s linear infinite;
+            pointer-events: none;
             opacity: 0.1;
         }
 
-        .botao-inicio {
-            background: linear-gradient(to right, var(--verde-escuro), var(--verde-medio));
-            border: none;
-            padding: 15px 40px;
-            transition: all 0.3s;
-            font-family: 'Montserrat', sans-serif;
-            border-radius: 50px;
+        .titulo-principal {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 30px;
             position: relative;
-            overflow: hidden;
-            z-index: 1;
-            font-size: 1.2rem;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            letter-spacing: 4px;
         }
 
-        .botao-inicio::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.4s;
-            z-index: -1;
-        }
-
-        .botao-inicio:hover {
-            background: linear-gradient(to right, var(--verde-medio), var(--verde-claro));
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .botao-inicio:hover::before {
-            left: 100%;
-        }
-
-        .img-inicio {
-            max-height: 450px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transition: transform 0.5s;
-            border: 8px solid var(--bege);
-            margin-top: 30px;
-        }
-
-        .img-inicio:hover {
-            transform: scale(1.03) rotate(1deg);
-        }
-
-        .secao-tropicalia {
-            background: linear-gradient(to bottom, #ffffff, #f8f6f0);
-            padding: 60px 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .secao-tropicalia::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-            background: var(--amarelo);
-            opacity: 0.1;
-            border-radius: 50%;
-        }
-
-        .secao-tropicalia::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 100px;
-            height: 100px;
-            background: var(--laranja);
-            opacity: 0.1;
-            border-radius: 50%;
-        }
-
-        .fundo-galeria {
-            background: linear-gradient(to bottom, #f8f6f0, #ffffff);
-            padding: 50px 30px;
-            position: relative;
-        }
-
-        .fundo-galeria::before {
-            content: '';
+        .titulo-principal::before,
+        .titulo-principal::after {
+            content: "BOAS-VINDAS A";
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 8px;
-            background: linear-gradient(90deg, var(--verde-escuro), var(--verde-medio), var(--verde-claro), var(--amarelo), var(--laranja));
+            width: 100%;
+            height: 100%;
         }
 
-        .img-galeria {
-            border-radius: 15px;
-            transition: all 0.4s;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            border: 5px solid white;
+        .titulo-principal::before {
+            color: var(--cor-secundaria);
+            animation: glitch-1 4s infinite;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
         }
 
-        .img-galeria:hover {
+        .titulo-principal::after {
+            color: var(--cor-terciaria);
+            animation: glitch-2 4s infinite;
+            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+        }
+
+        .logo-principal {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            filter: drop-shadow(0 0 15px var(--cor-primaria));
+            transition: all 0.5s ease;
+        }
+
+        .logo-principal:hover {
+            filter: drop-shadow(0 0 25px var(--cor-secundaria));
             transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
         }
 
-        .formulario {
-            background: linear-gradient(to bottom, #ffffff, #f8f6f0);
-            padding: 50px;
+        .botao-inicio {
+            background: linear-gradient(135deg, var(--cor-primaria), var(--cor-destaque));
+            border: none;
+            padding: 18px 50px;
+            border-radius: 4px;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 25px rgba(255, 62, 0, 0.5);
             position: relative;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(26, 109, 56, 0.1);
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .formulario::after {
+        .botao-inicio:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 62, 0, 0.7);
+        }
+
+        .img-inicio {
+            max-width: 80%;
+            border-radius: 10px;
+            margin-top: 60px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 3px solid var(--cor-primaria);
+            transition: all 0.5s ease;
+            filter: grayscale(30%) contrast(120%);
+        }
+
+        .img-inicio:hover {
+            transform: scale(1.03) rotate(-1deg);
+            box-shadow: 0 25px 50px rgba(255, 62, 0, 0.4);
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        /* Seções de conteúdo com estilo quebrado */
+        .secao {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .secao-tropicalia {
+            background: var(--cor-card);
+            border-top: 2px solid var(--cor-primaria);
+            border-bottom: 2px solid var(--cor-secundaria);
+            clip-path: polygon(0 0, 100% 5%, 100% 95%, 0 100%);
+        }
+
+        .titulo-secao {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0 20px;
+        }
+
+        .titulo-secao::after {
             content: '';
             position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid var(--verde-medio);
-            border-radius: 15px;
-            pointer-events: none;
-            opacity: 0.2;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cor-primaria), var(--cor-secundaria), var(--cor-terciaria));
         }
 
-        .form-control {
-            border: 2px solid #e0e0e0;
-            transition: all 0.3s;
+        .texto-destaque {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #CCCCCC;
+            text-align: justify;
+            border-left: 4px solid var(--cor-primaria);
+            padding-left: 20px;
+        }
+
+        .img-conteudo {
             border-radius: 10px;
-            padding: 12px 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            border: 3px solid var(--cor-secundaria);
+            transform: perspective(1000px) rotateY(10deg);
+        }
+
+        .img-conteudo:hover {
+            transform: perspective(1000px) rotateY(0) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 176, 255, 0.3);
+        }
+
+        /* Galeria com estilo quebrado */
+        .fundo-galeria {
+            background: linear-gradient(135deg, #0D0D0D 0%, #1A1A1A 100%);
+            padding: 100px 0;
+            clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+        }
+
+        .card-galeria {
+            background: var(--cor-card);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 2px solid var(--cor-terciaria);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transform: skew(-3deg, 0);
+        }
+
+        .card-galeria:hover {
+            transform: skew(0, 0) translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 214, 0, 0.3);
+            border-color: var(--cor-primaria);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: sepia(50%) contrast(120%);
+        }
+
+        .card-galeria:hover .card-img {
+            transform: scale(1.1);
+            filter: sepia(0%) contrast(100%);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--cor-texto);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--cor-primaria);
+            padding-bottom: 10px;
+        }
+
+        .card-text {
+            color: #AAAAAA;
             font-size: 1rem;
         }
 
+        /* Formulário com estilo futurista */
+        .formulario {
+            background: var(--cor-card);
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--cor-secundaria);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .formulario::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 176, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 6s infinite;
+        }
+
+        .form-control {
+            background: rgba(30, 30, 30, 0.7);
+            border: 2px solid var(--cor-borda);
+            color: var(--cor-texto);
+            padding: 15px 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', monospace;
+        }
+
         .form-control:focus {
-            border-color: var(--verde-medio);
-            box-shadow: 0 0 0 0.3rem rgba(26, 109, 56, 0.15);
+            background: rgba(30, 30, 30, 0.9);
+            border-color: var(--cor-secundaria);
+            box-shadow: 0 0 20px rgba(0, 176, 255, 0.3);
+            color: var(--cor-texto);
         }
 
+        .form-label {
+            color: var(--cor-texto);
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer com estilo tecnológico */
         footer {
-            background: linear-gradient(135deg, var(--verde-medio) 0%, var(--verde-escuro) 100%);
-            color: white;
-            padding: 40px 0 20px;
-            border-top: 5px solid var(--amarelo);
+            background: rgba(18, 18, 18, 0.95);
+            padding: 50px 0 20px;
+            border-top: 2px solid var(--cor-primaria);
+            clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);
         }
 
-        .bi {
-            font-size: 24px;
-            margin: 0 10px;
-            color: white;
-            transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px;
+        .icone-social {
+            font-size: 28px;
+            color: var(--cor-texto);
+            margin: 0 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 62, 0, 0.1);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            border: 2px solid var(--cor-borda);
         }
 
-        .bi:hover {
-            color: var(--amarelo);
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
+        .icone-social:hover {
+            color: var(--cor-primaria);
+            background: rgba(255, 62, 0, 0.2);
+            transform: translateY(-5px) rotate(10deg);
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 20px var(--cor-primaria);
+        }
+
+        /* Animações personalizadas */
+        @keyframes glitch-1 {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        @keyframes glitch-2 {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+        }
+
+        @keyframes scanlines {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+
+        @keyframes shine {
+            0% { left: -50%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .flutuante {
+            animation: flutuar 6s ease-in-out infinite;
+        }
+
+        @keyframes flutuar {
+            0% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(10px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .titulo-principal {
+                font-size: 4rem;
+            }
+            
+            .logo-principal {
+                max-width: 500px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .titulo-principal {
+                font-size: 3rem;
+            }
+            
+            .logo-principal {
+                max-width: 400px;
+            }
+            
+            .titulo-secao {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .logo-principal {
+                max-width: 300px;
+            }
+            
+            .nav-link {
+                padding: 10px 15px !important;
+                margin: 5px 0;
+            }
+            
+            .opcoes-acessibilidade {
+                right: auto;
+                left: 0;
+            }
+            
+            .formulario {
+                padding: 30px;
+            }
+            
+            .secao-tropicalia, .fundo-galeria {
+                clip-path: none;
+            }
         }
 
         /* Classes para tamanhos de fonte */
@@ -330,187 +577,162 @@
         .fonte-muito-grande {
             --tamanho-fonte: 1.25rem;
         }
-
-        /* Ajustes para diferentes tamanhos de tela */
-        @media (max-width: 768px) {
-            .inicio-fundo {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 20px;
-            }
-            
-            .esquerda-conteudo {
-                margin-bottom: 30px;
-            }
-            
-            .secao-tropicalia .container {
-                flex-direction: column;
-            }
-            
-            .secao-tropicalia .col-4, 
-            .secao-tropicalia .col-5 {
-                width: 100% !important;
-                max-width: 100%;
-            }
-            
-            .opcoes-acessibilidade {
-                right: auto;
-                left: 0;
-            }
-            
-            .formulario {
-                padding: 30px 20px;
-            }
-        }
-
-        /* Animações */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .flutuante {
-            animation: float 5s ease-in-out infinite;
-        }
-        
-        .text-verde {
-            color: var(--verde-escuro);
-        }
-        
-        .divisor {
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--verde-medio), transparent);
-            width: 80%;
-            margin: 30px auto;
-        }
-        
-        .destaque {
-            background: linear-gradient(120deg, rgba(255,215,0,0.1) 0%, rgba(255,140,0,0.1) 100%);
-            border-left: 5px solid var(--laranja);
-            padding: 20px;
-            border-radius: 0 15px 15px 0;
-            margin: 25px 0;
-        }
     </style>
 </head>
-
 <body class="fonte-normal">
     <div class="container-main">
-        <header class="p-3 p-md-4">
+        <header>
             <nav class="container d-flex justify-content-between align-items-center flex-wrap">
-                <img src="logo.png" class="nav-img flutuante" loading="lazy" alt="Logo Tropicália">
+                <img src="logo.png" class="nav-img" loading="lazy" alt="Logo Tropicália">
                 <ul class="nav mt-3 mt-md-0">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tropicalia">Tropicália</a></li>
                     <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
                 </ul>
 
-                <div id="acessibilidade" class="menu-acessibilidade">
-                    <button id="botao-acessibilidade" class="btn btn-acessibilidade btn-primary fw-bold">
+                <div class="menu-acessibilidade">
+                    <button id="botao-acessibilidade" class="btn btn-acessibilidade">
                         <i class="bi bi-accessibility"></i> Acessibilidade
                     </button>
                     <div id="opcoes-acessibilidade" class="opcoes-acessibilidade">
-                        <button id="aumentar-fonte" class="btn btn-acessibilidade fw-bold">A +</button>
-                        <button id="diminuir-fonte" class="btn btn-acessibilidade fw-bold">A -</button>
-                        <button id="fonte-normal" class="btn btn-acessibilidade fw-bold">A •</button>
+                        <button id="aumentar-fonte" class="btn btn-opcao">A +</button>
+                        <button id="diminuir-fonte" class="btn btn-opcao">A -</button>
+                        <button id="fonte-normal" class="btn btn-opcao">A •</button>
                     </div>
                 </div>
             </nav>
         </header>
 
         <main>
-            <section id="inicio" class="my-0">
-                <div class="inicio-fundo d-flex justify-content-between align-items-center flex-wrap">
-                    <div class="esquerda-conteudo mx-auto">
-                        <h1 class="display-4 text-white fst-italic fw-bold">Boas-vindas a</h1>
-                        <img src="logo-2.png" class="mb-4 flutuante" width="563" height="278" loading="lazy" alt="Logo Tropicália">
-                        <a href="#tropicalia" class="btn btn-primary btn-lg botao-inicio fw-semibold">Quero conhecer!</a>
+            <section id="inicio" class="inicio-fundo">
+                <div class="container">
+                    <h1 class="titulo-principal">BOAS-VINDAS A</h1>
+                    <img src="logo-2.png" class="logo-principal flutuante" loading="lazy" alt="Logo Tropicália">
+                    <div class="mt-5">
+                        <a href="#tropicalia" class="botao-inicio">Explorar Movimento</a>
                     </div>
-                    <img src="lossy-page1-640px-Os_Mutantes.tif (1).png"
-                        alt="A imagem apresenta o grupo musical Os mutantes, são três pessoas cantando em dois microfones"
-                        title="Os mutantes - CC0 Domínio Público / Acervo Arquivo Nacional" class="img-fluid img-inicio mt-4 mt-md-0 mx-auto d-block">
+                    <div class="mt-5">
+                        <img src="lossy-page1-640px-Os_Mutantes.tif (1).png" 
+                             alt="A imagem apresenta o grupo musical Os mutantes, são três pessoas cantando em dois microfones"
+                             class="img-fluid img-inicio">
+                    </div>
                 </div>
             </section>
 
-            <section id="tropicalia" class="secao-tropicalia">
-                <div class="container d-flex align-items-center flex-wrap py-5">
-                    <div class="col-12 col-md-4 d-flex justify-content-center mb-4 mb-md-0">
-                        <img src="image (1).png" class="rounded-pill img-galeria" alt="Imagem representativa da Tropicália" width="273" height="331" loading="lazy">
-                    </div>
-                    <div class="col-12 col-md-8">
-                        <h2 class="text-verde mb-4">O que foi a Tropicália?</h2>
-                        <p class="p-2">A Tropicália, também conhecida como Tropicalismo, foi um movimento cultural brasileiro que surgiu na década de 1960, tendo seu auge entre 1967 e 1968. Esse movimento abrangeu várias expressões artísticas, como a música, o cinema, o teatro e as artes plásticas, e teve como principal característica a mistura de elementos da cultura brasileira tradicional com influências estrangeiras, especialmente do rock e da música pop.</p>
-                        
-                        <div class="destaque">
-                            <p class="mb-0"><i class="bi bi-info-circle"></i> Fonte: Site Toda a matéria</p>
+            <section id="tropicalia" class="secao secao-tropicalia">
+                <div class="container">
+                    <h2 class="titulo-secao">O QUE FOI A TROPICÁLIA?</h2>
+                    <div class="row align-items-center">
+                        <div class="col-md-5 mb-4 mb-md-0">
+                            <img src="image (1).png" class="img-fluid img-conteudo" alt="Imagem representativa da Tropicália">
+                        </div>
+                        <div class="col-md-7">
+                            <p class="texto-destaque">
+                                A Tropicália, também conhecida como Tropicalismo, foi um movimento cultural
+                                brasileiro que surgiu na década de 1960, tendo seu auge entre 1967 e 1968. Esse movimento
+                                abrangeu várias expressões artísticas, como a música, o cinema, o teatro e as artes plásticas, e
+                                teve como principal característica a mistura de elementos da cultura brasileira tradicional com
+                                influências estrangeiras, especialmente do rock e da música pop.
+                            </p>
+                            <div class="mt-4 p-3" style="background: rgba(255, 62, 0, 0.1); border-left: 4px solid var(--cor-primaria);">
+                                <p class="mb-0"><i class="bi bi-info-circle"></i> Fonte: Site Toda a matéria</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="divisor"></div>
             </section>
 
             <section id="galeria" class="fundo-galeria">
-                <h2 class="text-center pt-3 text-verde">Galeria</h2>
-                <p class="text-center mb-5">Alguns dos principais artistas do movimento tropicalista</p>
-                
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-md-5 mb-4">
-                            <img src="lossy-page1-640px-Jorge_Ben_e_o_Trio_Mocotó_no_Teatro_da_Lagoa,_1971.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Jorge Ben e o Trio Mocotó no Teatro da Lagoa, 1971">
-                            <p class="text-center mt-2">Jorge Ben e o Trio Mocotó (1971)</p>
+                    <h2 class="titulo-secao">GALERIA</h2>
+                    <p class="text-center texto-destaque mb-5">Artistas que moldaram o movimento tropicalista</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card-galeria">
+                                <img src="lossy-page1-640px-Jorge_Ben_e_o_Trio_Mocotó_no_Teatro_da_Lagoa,_1971.tif.jpg" 
+                                     class="card-img" loading="lazy" alt="Jorge Ben e o Trio Mocotó no Teatro da Lagoa, 1971">
+                                <div class="card-body">
+                                    <h5 class="card-title">Jorge Ben e o Trio Mocotó</h5>
+                                    <p class="card-text">Teatro da Lagoa, 1971</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-5 mb-4">
-                            <img src="lossy-page1-640px-Os_Mutantes_2.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Os Mutantes">
-                            <p class="text-center mt-2">Os Mutantes</p>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card-galeria">
+                                <img src="lossy-page1-640px-Os_Mutantes_2.tif.jpg" 
+                                     class="card-img" loading="lazy" alt="Os Mutantes">
+                                <div class="card-body">
+                                    <h5 class="card-title">Os Mutantes</h5>
+                                    <p class="card-text">Inovadores sonoros do movimento</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-md-5 mb-4">
-                            <img src="lossy-page1-640px-Gilberto_Gil_nos_anos_1960.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Gilberto Gil nos anos 1960">
-                            <p class="text-center mt-2">Gilberto Gil (anos 1960)</p>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card-galeria">
+                                <img src="lossy-page1-640px-Gilberto_Gil_nos_anos_1960.tif.jpg" 
+                                     class="card-img" loading="lazy" alt="Gilberto Gil nos anos 1960">
+                                <div class="card-body">
+                                    <h5 class="card-title">Gilberto Gil</h5>
+                                    <p class="card-text">Anos 1960 - Voz da revolução</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-5 mb-4">
-                            <img src="lossy-page1-640px-Caetano_Veloso_no_III_Festival_da_Música_Popular.tif.jpg" class="img-fluid img-galeria" loading="lazy" alt="Caetano Veloso no III Festival da Música Popular">
-                            <p class="text-center mt-2">Caetano Veloso no III Festival da MPB</p>
+                        <div class="col-md-6 col-lg-3 mb-4">
+                            <div class="card-galeria">
+                                <img src="lossy-page1-640px-Caetano_Veloso_no_III_Festival_da_Música_Popular.tif.jpg" 
+                                     class="card-img" loading="lazy" alt="Caetano Veloso no III Festival da Música Popular">
+                                <div class="card-body">
+                                    <h5 class="card-title">Caetano Veloso</h5>
+                                    <p class="card-text">III Festival da Música Popular</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="divisor"></div>
             </section>
 
-            <section id="contato" class="py-5">
-                <div class="container d-flex justify-content-center">
-                    <div class="col-md-10 col-lg-8 formulario">
-                        <h2 class="mb-4 text-center text-verde">Entre em contato</h2>
-                        <form>
-                            <div class="form-group mb-4">
-                                <label for="nome" class="form-label">Nome</label>
-                                <input type="text" id="nome" name="nome" class="form-control rounded-3 mt-1" placeholder="Digite seu nome completo">
+            <section id="contato" class="secao">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="formulario">
+                                <h2 class="titulo-secao mb-4">ENTRE EM CONTATO</h2>
+                                <form>
+                                    <div class="mb-4">
+                                        <label for="nome" class="form-label">Nome</label>
+                                        <input type="text" id="nome" name="nome" class="form-control" placeholder="Seu nome completo">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" placeholder="seu@email.com">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="mensagem" class="form-label">Mensagem</label>
+                                        <textarea id="mensagem" name="mensagem" class="form-control" rows="4" placeholder="Sua mensagem..."></textarea>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button type="submit" class="btn btn-acessibilidade btn-lg">ENVIAR MENSAGEM</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="form-group mb-4">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" name="email" class="form-control rounded-3 mt-1" placeholder="Digite seu email">
-                            </div>
-                            <div class="form-group mb-4">
-                                <label for="mensagem" class="form-label">Mensagem</label>
-                                <textarea id="mensagem" name="mensagem" class="form-control rounded-4 mt-2" rows="4" placeholder="Escreva sua mensagem"></textarea>
-                            </div>
-                            <div class="d-grid gap-2">
-                                <button type="submit" class="btn btn-acessibilidade btn-lg rounded-pill py-3">Enviar mensagem</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </section>
         </main>
         
-        <footer class="text-center p-4 fst-italic">
-            <p>Acesse nossas redes:</p>
-            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-            <a href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-            <p class="mt-4">Desenvolvido por Start by Alura. Projeto fictício sem fins comerciais.</p>
+        <footer class="text-center">
+            <div class="container">
+                <p class="mb-4">CONECTE-SE CONOSCO</p>
+                <div class="mb-4">
+                    <a href="#" class="icone-social"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#" class="icone-social"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="icone-social"><i class="bi bi-tiktok"></i></a>
+                </div>
+                <p>Desenvolvido por Start by Alura. Projeto fictício sem fins comerciais.</p>
+            </div>
         </footer>
     </div>
 
@@ -610,5 +832,4 @@
         });
     </script>
 </body>
-
 </html>
